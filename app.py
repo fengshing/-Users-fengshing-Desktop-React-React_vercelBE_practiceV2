@@ -1,9 +1,8 @@
-# 第一版本：這段代碼是用來創建一個基本的Web服務器，使用 FastAPI 框架，並利用 Uvicorn 作為 ASGI 服務器來運行它。
-# 第二迭代：導入WorkList，然後定義路由器做更動
-# 第三迭代：導入CORSMiddleware以及相關指令，處理CORS議題
+# 把舊的db載入改成router在跑
 import uvicorn
 from fastapi import FastAPI
-from WorkList import WorkList
+# from api.WorkList import WorkList
+from router import WorkList
 from fastapi.middleware.cors import CORSMiddleware
 
 # 創建 FastAPI 應用實例
@@ -24,12 +23,22 @@ app.add_middleware(
     allow_headers=['*'] # 允許所有標準的 HTTP 頭部
 )
 
-# 定義路由處理器，用來讓app.py能顯示WorkList的內容
+
+# 用router的呼叫，使雲端上吃得到資料
+app.include_router(WorkList.router)
+# 這行代碼將 WorkList 路由器添加到的 FastAPI 應用中。這意味着 WorkList 中定義的所有路徑（或端點）現在都是 FastAPI 應用的一部分。
+
+#方便監聽而使用
+
+
+
+
+# 本地運轉監看用，用來本地app.py能顯示WorkList的內容
 @app.get("/")
 def read_root():
-    return WorkList
+    return {"message": "Welcome to student WorkList API!"}
 
-# 定義路由處理器，讓前端能夠吃到網址：http://127.0.0.1:5000/WorkList
+# 本地運轉監看用，在"本地網址/WorkList"打印資料
 @app.get("/WorkList")
 def root():
     return WorkList
