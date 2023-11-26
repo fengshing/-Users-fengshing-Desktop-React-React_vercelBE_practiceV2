@@ -28,10 +28,6 @@ app.add_middleware(
 app.include_router(WorkList.router)
 # 這行代碼將 WorkList 路由器添加到的 FastAPI 應用中。這意味着 WorkList 中定義的所有路徑（或端點）現在都是 FastAPI 應用的一部分。
 
-#方便監聽而使用
-
-
-
 
 # 本地運轉監看用，用來本地app.py能顯示WorkList的內容
 @app.get("/")
@@ -43,7 +39,7 @@ def read_root():
 def root():
     return WorkList
 
-# 運行伺服器
+# 運行伺服器，但由一個
 if __name__ == "__main__":
     uvicorn.run("app:app", port=5000, reload=True)
 # if __name__ == "__main__" 這行是一個標準的 Python 條件語句，用來檢查該模組（文件）是否作為主要程序運行。

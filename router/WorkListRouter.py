@@ -3,7 +3,6 @@ from db.WorkListJson import WorkList
 #python導入模塊時，是吃絕對路徑。但是吃檔案還是相對的，[.]就是[/]的意思
 
 
-
 router = APIRouter (
     prefix='/WorkList',
     tag=['WorkList']
