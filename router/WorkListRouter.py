@@ -5,7 +5,7 @@ from db.WorkListJson import WorkList
 
 router = APIRouter (
     prefix='/WorkList',
-    tag=['WorkList']
+    tags=['WorkList']
 )
 
 # prefix的功用是創建路徑，好比prefix='/WorkList'代表https:.../WorkList

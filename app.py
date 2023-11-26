@@ -1,8 +1,8 @@
 # 把舊的db載入改成router在跑
 import uvicorn
 from fastapi import FastAPI
-# from api.WorkList import WorkList
-from router import WorkList
+from db.WorkListJson import WorkList
+from router import WorkListRouter
 from fastapi.middleware.cors import CORSMiddleware
 
 # 創建 FastAPI 應用實例
@@ -25,8 +25,8 @@ app.add_middleware(
 
 
 # 用router的呼叫，使雲端上吃得到資料
-app.include_router(WorkList.router)
-# 這行代碼將 WorkList 路由器添加到的 FastAPI 應用中。這意味着 WorkList 中定義的所有路徑（或端點）現在都是 FastAPI 應用的一部分。
+app.include_router(WorkListRouter.router)
+# 這行代碼將 WorkListRouter 路由器添加到的 FastAPI 應用中。這意味着 WorkList 中定義的所有路徑（或端點）現在都是 FastAPI 應用的一部分。
 
 
 # 本地運轉監看用，用來本地app.py能顯示WorkList的內容
