@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "postgressql://default:wDt8BaKp1fWm@ep-blue-union-72271377.us-east-1.postgres.vercel-storage.com:5432/verceldb"
+SQLALCHEMY_DATABASE_URL = "postgresql://default:wDt8BaKp1fWm@ep-blue-union-72271377.us-east-1.postgres.vercel-storage.com:5432/verceldb"
 #這個要用相對路徑，因為engine在app.py內被實作，所以資料庫檔案會建立在與app.py同⼀層的專案根⽬錄位置
 
 engine = create_engine(
