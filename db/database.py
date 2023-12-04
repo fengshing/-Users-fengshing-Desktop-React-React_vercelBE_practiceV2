@@ -7,7 +7,7 @@ SQLALCHEMY_DATABASE_URL = "postgressql://default:wDt8BaKp1fWm@ep-blue-union-7227
 #這個要用相對路徑，因為engine在app.py內被實作，所以資料庫檔案會建立在與app.py同⼀層的專案根⽬錄位置
 
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+    SQLALCHEMY_DATABASE_URL
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -20,3 +20,5 @@ def get_db():
         yield db
     finally:
         db.close()
+
+# , connect_args={"check_same_thread": False}
