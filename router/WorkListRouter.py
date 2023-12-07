@@ -10,7 +10,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 router = APIRouter (
-    prefix='/ver1203/worklist',
+    prefix='/worklist',
     tags=['worklist']
 )
 
