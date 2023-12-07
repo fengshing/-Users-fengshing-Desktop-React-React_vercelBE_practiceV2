@@ -6,35 +6,34 @@ from fastapi import FastAPI
 from db import models
 from db.database import engine
 from router import WorkListRouter
-from fastapi.middleware.cors import CORSMiddleware
+# from fastapi.middleware.cors import CORSMiddleware
 
 
 # 創建 FastAPI 應用實例
-app = FastAPI()
-
-# 定義允許訪問您應用的來源列表，有本地測試用的網址，以及來自所有來源的請求
-origins = [
-    'http://localhost:5173',
-    "*"
-]
-
-# 應用FastApi的套件，處理CORS議題的運轉機制
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins, # 允許來源列表中的來源
-    allow_credentials=True,
-    allow_methods=["*"], # 允許所有常用的 HTTP 方法
-    allow_headers=['*'] # 允許所有標準的 HTTP 頭部
+app = FastAPI(
+    title = "Student WorkList API",
+    description = "處理大二學生的網頁作品資料，會包含如校名、學期、技能等等",
+    version="1207.Ver2版",
+    terms_of_service="http://localhost:5000",
 )
-
-
 # 用router的呼叫，使雲端上吃得到資料
 app.include_router(WorkListRouter.router)
 # 這行代碼將 WorkListRouter 路由器添加到的 FastAPI 應用中。這意味着 WorkList 中定義的所有路徑（或端點）現在都是 FastAPI 應用的一部分。
 
+
+# 應用FastApi的套件，處理CORS議題的運轉機制；先放這，目前進入Ver2版後感覺用不到
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=origins, # 允許來源列表中的來源
+#     allow_credentials=True,
+#     allow_methods=["*"], # 允許所有常用的 HTTP 方法
+#     allow_headers=['*'] # 允許所有標準的 HTTP 頭部
+# )
+
+
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to student WorkList API!"}
+    return {"message": "Welcome to student WorkList API! 請在本網址後輸入/docs查閱API資料"}
 
 
 # 運行伺服器，但由一個
