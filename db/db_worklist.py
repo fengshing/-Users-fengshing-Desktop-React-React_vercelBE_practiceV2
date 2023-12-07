@@ -65,7 +65,7 @@ def get_worklist_by_semester(semester: str, db: Session):
     return worklist
 
 # 從資料庫中讀取特定學校的worklist記錄。如果沒有找到符合指定學校的紀錄，會引發HTTP 404異常，否則返回這些紀錄。
-def get_homework_by_school(school: str, db: Session):
+def get_worklist_by_school(school: str, db: Session):
     #從資料庫中查詢所有學校等於（==）指定school值的worklist記錄。
     worklist = db.query(DbWorklist).filter(DbWorklist.school == school).all()
     if not worklist:

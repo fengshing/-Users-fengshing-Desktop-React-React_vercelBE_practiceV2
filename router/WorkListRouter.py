@@ -52,7 +52,7 @@ def get_worklist_by_semester(semester: str = "", db: Session = Depends(get_db)):
 # 當端點({prefix}/semester)被訪問時，將會調用get...ster的指令來檢索資料庫所有的worklist紀錄，如果沒有找到任何一筆，則回傳404。
 
 @router.get('/school',response_model=List[WorkListResponseSchema])
-def get_homeworks_by_school(school: str = "", db: Session = Depends(get_db)):
+def get_worklist_by_school(school: str = "", db: Session = Depends(get_db)):
     return db_worklist.get_worklist_by_school(school, db)
 # 當端點({prefix}/school)被訪問時，將會調用get...hool的指令來檢索資料庫所有的worklist紀錄，如果沒有找到任何一筆，則回傳404。
 
