@@ -18,7 +18,7 @@ router = APIRouter (
 logger = logging.getLogger("myapp")
 # handler = RotatingFileHandler('myapp.log', maxBytes=1024*1024*5, backupCount=3)
 # logger = logging.getLogger('myapp')
-stream_handler = StreamHandler()
+stream_handler = logging.StreamHandler()
 logger.setLevel(logging.INFO)
 logger.addHandler(stream_handler)
 
