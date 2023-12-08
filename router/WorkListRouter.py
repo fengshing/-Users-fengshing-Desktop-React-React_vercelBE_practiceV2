@@ -15,10 +15,17 @@ router = APIRouter (
 )
 
 # 設置日誌處理器，限制日誌大小並進行轉儲
+# logger = logging.getLogger("myapp")
+# handler = RotatingFileHandler('myapp.log', maxBytes=1024*1024*5, backupCount=3)
+# logger.setLevel(logging.INFO)
+# logger.addHandler(handler)
+
+
+# 測試，使用StreamHandler 而不是 RotatingFileHandler
 logger = logging.getLogger("myapp")
-handler = RotatingFileHandler('myapp.log', maxBytes=1024*1024*5, backupCount=3)
 logger.setLevel(logging.INFO)
-logger.addHandler(handler)
+stream_handler = logging.StreamHandler()
+logger.addHandler(stream_handler)
 
 
 # prefix的功用是創建路徑，好比prefix='/worklist'代表https:.../worklist
