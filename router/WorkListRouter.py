@@ -7,7 +7,7 @@ from db import db_worklist
 from router.schemas import WorkListResponseSchema,WorkListRequestSchema
 from typing import List
 import logging
-from logging.handlers import RotatingFileHandler
+from logging.handlers import RotatingFileHandler, StreamHandler
 
 router = APIRouter (
     prefix='/worklist',
@@ -20,7 +20,7 @@ logger = logging.getLogger("myapp")
 # logger = logging.getLogger('myapp')
 stream_handler = StreamHandler()
 logger.setLevel(logging.INFO)
-logger.addHandler(handler)
+logger.addHandler(stream_handler)
 
 
 # prefix的功用是創建路徑，好比prefix='/worklist'代表https:.../worklist
