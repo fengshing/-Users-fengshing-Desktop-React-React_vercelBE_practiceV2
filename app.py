@@ -3,9 +3,9 @@ from fastapi import FastAPI
 # 1202更動 把舊的db載入改成router在跑
 # from db.WorkListJson import WorkList
 # 1203更動 再把db改成database再跑
+from router import WorkListRouter
 from db import models
 from db.database import engine
-from router import WorkListRouter
 # from fastapi.middleware.cors import CORSMiddleware
 
 
