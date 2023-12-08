@@ -13,18 +13,12 @@ router = APIRouter (
     tags=['worklist']
 )
 
-# 設置日誌處理器，限制日誌大小並進行轉儲
-# logger = logging.getLogger("myapp")
-# handler = RotatingFileHandler('myapp.log', maxBytes=1024*1024*5, backupCount=3)
-# logger.setLevel(logging.INFO)
-# logger.addHandler(handler)
-
-
-# 測試，使用StreamHandler 而不是 RotatingFileHandler
-logger = logging.getLogger("myapp")
-logger.setLevel(logging.INFO)
-stream_handler = logging.StreamHandler()
-logger.addHandler(stream_handler)
+# 設置日誌處理器，使用StreamHandler 而不是 RotatingFileHandler。
+# 主要用途是可以在控制台看到應用程序的日誌輸出，以利於開發者。
+logger = logging.getLogger("myapp") #這行代碼創建名為myapp的日誌處理器
+logger.setLevel(logging.INFO) #這邊只說只有info類型的資料（如ERROR.WAARING）會被處理與紀錄
+stream_handler = logging.StreamHandler() #創建一個流處理器，將日誌訊息輸出到控制台（指終端機或開發者介面）。
+logger.addHandler(stream_handler) #確保所有訊息都會通過此處理器輸出
 
 
 # prefix的功用是創建路徑，好比prefix='/worklist'代表https:.../worklist
