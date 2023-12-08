@@ -7,7 +7,6 @@ from db import db_worklist
 from router.schemas import WorkListResponseSchema,WorkListRequestSchema
 from typing import List
 import logging
-from logging.handlers import RotatingFileHandler
 
 router = APIRouter (
     prefix='/worklist',
